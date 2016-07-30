@@ -18,8 +18,8 @@
 		angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope) {
 			$scope.app = "Lista Telefonica";
 			$scope.contatos = [
-				{nome:"Vitor", telefone:"988284098"}
-				{nome:"Carolina", telefone:"9896189688"}
+				{nome:"Vitor", telefone:"988284098"},
+				{nome:"Carolina", telefone:"9896189688"},
 				{nome:"Casa", telefone:"31216590"}
 			]
 		});
@@ -27,7 +27,17 @@
 </head>
 <body ng-controller="listaTelefonicaCtrl">
 	<div class="jumbotron">
-		<h4>{{app}}</h4>
+		<h3>{{app}}</h3>
+		<table class="table table-striped">
+			<tr>
+				<th>Nome</th>
+				<th>Telefone</th>
+			</tr>
+			<tr ng-repeat="contato in contatos">
+				<td>{{contato.nome}}</td>
+				<td>{{contato.telefone}}</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>
