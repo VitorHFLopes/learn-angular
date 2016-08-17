@@ -12,6 +12,13 @@
 			margin-right: auto;
 			margin-left: auto;
 		}
+		.header th{
+			text-align: center;
+		}
+
+		.form-control {
+			margin: 5px 0px;
+		}
 	</style>
 	<script>
 		angular.module("listaTelefonica", []);
@@ -21,7 +28,11 @@
 				{nome:"Vitor", telefone:"988284098"},
 				{nome:"Carolina", telefone:"9896189688"},
 				{nome:"Casa", telefone:"31216590"}
-			]
+			];
+			$scope.adicionarContato = function(contato) {
+				$scope.contatos.push(angular.copy(contato));
+				delete $scope.contato;
+			};
 		});
 	</script>
 </head>
@@ -29,7 +40,7 @@
 	<div class="jumbotron">
 		<h3>{{app}}</h3>
 		<table class="table table-striped">
-			<tr>
+			<tr class="header">
 				<th>Nome</th>
 				<th>Telefone</th>
 			</tr>
@@ -38,6 +49,9 @@
 				<td>{{contato.telefone}}</td>
 			</tr>
 		</table>
+		<input class="form-control" type="text" placeholder="Nome" ng-model="contato.nome">
+		<input class="form-control" type="text" placeholder="Telefone" ng-model="contato.telefone">
+		<button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button>
 	</div>
 </body>
 </html>
